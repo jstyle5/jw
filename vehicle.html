@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vehicle</title>
+    </head>
+    <body>
+        <img id = "imgID" />
+
+        <script>
+            var checker = /^[0-9]+$/;
+            
+            let user_input = prompt("How much do you want to spend on the purchase of transportation vehicle?");
+            while (user_input==null || user_input=="" || !user_input.match(checker)) {
+                alert("Invalid Input. Try again.")
+                user_input = prompt("How much do you want to spend on the purchase of transportation vehicle?");
+            }
+            let user_money = parseInt(user_input);
+
+            while (user_money < 10 || user_money > 800000) {
+                window.alert("Invalid Input. Try again.");
+                user_input = prompt("How much do you want to spend on the purchase of transportation vehicle?");
+                user_money = parseInt(user_input);
+            }
+            if (10 <= user_money && user_money < 30000) {
+                document.getElementById("imgID").src = "images/scooter.png";
+                document.getElementById("imgID").width = "300";
+                document.getElementById("imgID").height = "300";
+                document.write("<br>" + "Here is your scooter.");
+            } else if (30000 <= user_money && user_money < 100000) {
+                document.getElementById("imgID").src = "images/truck.png";
+                document.getElementById("imgID").width = "300";
+                document.getElementById("imgID").height = "300";
+                document.write("<br>" + "Here is your truck.");
+            } else if (100000 <= user_money && user_money < 300000) {
+                document.getElementById("imgID").src = "images/bmw.png";
+                document.getElementById("imgID").width = "300";
+                document.getElementById("imgID").height = "300";
+                document.write("<br>" + "Here is your BMW.");
+            } else if (300000 <= user_money && user_money <= 800000) {
+                document.getElementById("imgID").src = "images/maserati.png";
+                document.getElementById("imgID").width = "300";
+                document.getElementById("imgID").height = "300";
+                document.write("<br>" + "Here is your Maserati.");
+            }
+        </script>
+    </body>
+</html>

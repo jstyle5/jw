@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>TEST</title>
+        <meta charset="utf=8">
+        <!-- <style>
+        button {position: absolute;}
+        </style> -->
+    </head>
+
+    <body>
+        <p>Hello there!</p>
+        <img id="imgID" src="images/candy.png" width="150" height="150"/>
+        <p id="message"></p>
+
+        <p id="textID">Click</p>
+
+        <button id='num'>NUMBER</button>
+        <button id='me' style = 'left:50px; top:20px; position: absolute;'>Click here :-)</button>
+        
+        <script>
+            function ranNum() {
+                let randomNum = Math.floor(Math.random()*100);
+                document.getElementById('num').innerHTML = randomNum;
+                document.getElementById('num').style.fontSize = 'large';
+            }
+            document.getElementById('num').onclick = ranNum;
+            
+
+            function clickText() {
+                document.getElementById('textID').innerHTML = 'Thank you for clicking';
+                document.getElementById('textID').style.color = 'red';
+            }
+
+            document.getElementById('textID').onclick = clickText;
+
+            function clickHandler() {
+                document.getElementById('me').innerHTML = 'Clicked me!';
+                document.getElementById('me').style= 'left:80px; position: absolute;';
+            }
+
+            document.getElementById('me').onclick = clickHandler;
+
+
+            // let myLeft = 0;
+            function movingImg() {
+                let a = Math.floor(Math.random()*500);
+                let b = Math.floor(Math.random()*500);
+                document.getElementById('imgID').style.position = 'absolute';
+                document.getElementById('imgID').style.left = a + 'px';
+                document.getElementById('imgID').style.top = b + 'px';
+                // myLeft += 10;
+            }
+            document.getElementById('imgID').onclick = movingImg;
+
+            setInterval(function(){movingImg()}, 100);
+
+
+            
+
+            // function ReverseArr(arr) {
+            //     let result = [];
+
+            //     for( let i = 0; i < arr.length; i++) {
+            //         result[i] = arr[arr.length-i-1];
+            //     }
+            //     return result;
+            // }
+
+            // console.log(ReverseArr([1,2,3,4,5]));
+
+            let age = 23;
+            if (age > 18) {
+                document.getElementById("message").innerHTML = "<p style='color:green;'>You are an adult</p>";
+            }
+
+            // var user_name = prompt("Enter your name");
+            // document.write("Hello " + user_name);
+            // var i;
+            // for(i=0; i<10; ++i) {
+            //     if(i%3==0) {
+            //     console.log(i);
+            //     }
+            // }
+
+            // var question = prompt("What is 4+5?");
+            // if (question === "9") {
+            //     document.write("Good job");
+            // } else {
+            //     document.write("You said what grade you were?!");
+            // }
+         
+            // let s=0;
+            // for(let i=0; i<=2; i++) {
+            //     for(let j=1; j<=3; j++) {
+            //         console.log(s);
+            //         s++
+            //     }
+            // }
+            
+
+            // var user_input = prompt("What is 4+5?")
+            // if (user_input === "9") {
+            //     document.write("Correct!");
+            //     document.getElementById("imgID").src = "images/bcit_logo.jpg";
+            //     document.getElementById("bgcolor").style.background = "red";
+            //     var sum = 0;
+            //     for (var i = 100; i<=350 ; i++) {
+            //         if(i % 7 == 0) {
+            //             continue;
+            //             sum+=i
+            //         }
+            //         document.getElementById("message").innerHTML = sum;
+            //     }
+            // } else {
+            //     document.write("Wrong!");
+            //     document.getElementById("imgID").src = "images/heisenberg.gif"
+            //     document.getElementById("bgcolor").style.background = "blue";
+            // }
+
+            // var stooges = []
+            // stooges[0] = "Larry";
+            // stooges[1] = "Moe";
+            // stooges[4] = "Curly";
+            // stooges[4] = "Shemp";
+
+            // for(var i=0; i<=4; i++) {
+            //     console.log(stooges[i])
+            // }
+
+
+            // var int = [74,44,77,91,123,1393,1369,119,873,972]
+            // for(var i=0; i<=int.length; i++) {
+            //     if(int[i]%7==0) {
+            //         console.log(int[i]);
+            //     }
+            // }
+
+
+            // function calculateSum(k) {
+            //     let sum = 0;
+            //     for(let i=1; i<=k; i++) {
+            //         sum+=i;
+            //     }
+            //     return (sum);
+            // }
+
+            // function display(sum) {
+            //     console.log(sum);
+            // }
+            
+            // let i;
+            // for (i = 0; i < 5; i++) {
+
+            // }
+
+            // console.log(i)
+
+
+            // let a = new Array(10);
+            // a[50] = 17;
+            // console.log(a[50])
+            // console.log(a.length)
+            // console.log(a)
+
+            // console.log(parseInt("Hello123"));
+            // if(isNaN("Hello12345")) {
+            //     console.log("Is Not a Number")
+            // }
+
+            // console.log(5/2);
+
+            // display(calculateSum(5))
+            // display(calculateSum(10))
+
+            // console.log(parseInt("Hello123"))
+
+            // let arr = ["a", "b", "c", "d"];
+            // for (let i = 0; i < arr.length; i++) {
+            //     var word = "";
+            //     word += arr[i];
+            // }
+            // console.log(word);
+
+            // function example() {
+            //     {
+            //         var n1 = 10;
+            //         let n2 = 20;
+            //     }
+            //     console.log(n1);
+            //     console.log(n2);
+            // }
+
+            // console.log(example())
+
+
+
+        </script>
+
+
+    </body>
+
+</html>

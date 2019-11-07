@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Zombie Hunting Game</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <p><strong>Your Score</strong></p>
+            <p id="scoreID">0</p>
+            <button id="new_button" onclick="newGame()">New Game</button>
+            <button id="end_button" onclick="endGame()">End Game</button>
+        </div>
+        
+        <img id="zombieImg" src="images/zombie.gif" alt="Zombie"/>
+        <audio id="audioID" src="src/bomb.mp3"></audio>
+
+        <script>
+            
+            let score = 0;
+            let myZombie = document.getElementById("zombieImg");
+            let myExplosion = document.getElementById("explosionImg");
+            let myScore = document.getElementById("scoreID");
+            let myAudio = document.getElementById("audioID");
+            let moveZombieInterval = setInterval(function(){moveZombie()}, 2000);
+            let zombieDead = false;
+
+            // let zombies = [z1, z2, z3]; // <--- zombies..(HTMLImage)
+            // let zombieIntervals = [];
+            // for (let i = 0; i < zombies.length; i++) {
+            //     //  moveZombie(zombies[i])
+            // }
+
+            function newGame() {
+                clearInterval(moveZombieInterval);
+                myScore.innerHTML = "0";
+                score = 0;
+                moveZombieInterval = setInterval(function(){moveZombie()}, 2000);
+                myZombie.onclick = killZombie;
+            }
+
+
+            function createZombie() {
+                // Create img HTMLElement
+                // return zombie
+            }
+
+
+            
+            function moveZombie() {
+                let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+                let x = Math.floor(Math.random() * (width - myZombie.width));
+                let y = Math.floor(Math.random() * (height - myZombie.height));
+                zombieDead = false;
+                myZombie.src = "images/zombie.gif";
+                myZombie.style.transform = "translate(0, 0)";
+                myZombie.style.left = x + "px";
+                myZombie.style.top = y + "px";
+            }
+
+
+            function earnScore() {
+                myScore.innerHTML = ++score;
+            }
+            
+            
+            function killZombie() {   
+                if(!zombieDead) {
+                    earnScore();
+                    zombieDead = true;
+                }
+                myZombie.src = "images/explosion.gif";
+                myAudio.playbackRate = 2;
+                myAudio.play();  
+            }
+
+
+            function gameoverMessage() {
+                myZombie.src = "images/gameover.gif";
+            }
+
+
+            function endGame() {
+                myZombie.style="position: absolute; top: 50%; left: 50%;"
+                myScore.innerHTML="0";
+                myZombie.src = "images/zombie.gif";
+                setTimeout(function(){gameoverMessage()},500);
+                myZombie.onclick = gameoverMessage;
+                score = 0;
+                clearInterval(moveZombieInterval);
+            }
+
+            newGame();
+
+        </script>
+    </body>
+</html>

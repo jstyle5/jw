@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Lab7_C</title>
+        <meta charset="utf-8">
+        <style>
+            #MyImg { position: absolute; top: 50%; left: 50%; margin: -75px 0 0 -75px;}
+        </style>
+    </head>
+
+    <body>
+
+        <img id="MyImg" src="images/dog.jpg" alt="dog" width="150" height="150" onclick="catMoving()" />
+
+        <script>
+            everyTwoSecond()
+            // document.write(width)
+            // document.write(height)
+            function dogMoving() {
+                let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+                let x = Math.random() * (width - 150);
+                let y = Math.random() * (height - 150);
+                let myCat = document.getElementById("MyImg");
+                myCat.style.top = y + "px";
+                myCat.style.left = x + "px";
+                myCat.style.margin = "0 0 0 0";   
+            }
+
+            function everyTwoSecond() {
+                setInterval(dogMoving, 500);
+            }
+
+            /*
+            https://www.w3schools.com/css/exercise.asp
+            CSS Display / Visibility
+            CSS Positioning
+            CSS Overflow
+            CSS Align
+            */
+
+            
+        </script>
+
+    </body>
+</html>
+

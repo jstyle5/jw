@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Lab 5 - Jaewhee Seo</title>
+        <meta charset="utf-8">
+        <style>
+            p {
+                color: grey;
+                text-align: center;
+                font-size: xx-large;
+            }
+        </style>
+    </head>
+    <body>
+
+        <p id="demo">Your result will be shown here.</p>
+
+        <script>
+            // PART A
+
+            function getting_user_input() {
+                let checker = /^[0-9]+$/;
+                let user_input = prompt("Please Enter an integer between 1 and 1000.");
+                while (user_input==null || user_input=="" || !user_input.match(checker) || (!(1 <= user_input && user_input <= 1000))) {
+                    alert("Invalid Input. Try again.")
+                    user_input = prompt("Please Enter an integer between 1 and 1000.");
+                }
+                user_input = parseInt(user_input);
+                proper_format_display(user_input, displaying_reverse(calculation(user_input)));
+
+            }
+
+
+            function calculation(user_input) {
+                let quotient = Math.floor(user_input / 2);
+                let remainder = user_input % 2;
+                let result = remainder.toString();
+                while(quotient != 0) {
+                    remainder = quotient % 2;
+                    quotient = quotient / 2;
+                    quotient = Math.floor(quotient);
+                    result += remainder.toString();             
+                }
+                return (result);
+            }
+
+
+            function displaying_reverse(result) {
+                return result.split("").reverse().join("");
+            }
+
+            
+            function proper_format_display(user_input, result) {
+                return document.getElementById("demo").innerHTML = "You entered " + user_input + " which is binary " + "(" + result + ").";
+            }
+
+
+            getting_user_input();
+
+
+
+
+            // PART B
+            let array1 = [1,2,3,4,5];
+            let array2 = [6,7,8];
+            function getting_arrays(array1, array2) {
+                let sum = 0;
+                for(let i=0; i<array1.length; i++) {
+                    sum += array1[i];
+                }
+                
+                for(let j=0; j<array2.length; j++) {
+                    sum += array2[j];
+                }
+                return (sum);
+            }
+
+
+            function displaying_sum(sum) {
+                console.log(sum);
+            }
+
+
+            displaying_sum(getting_arrays(array1, array2));
+
+
+
+            // PART C
+            let single_array = [-1,1,4,-2,3,2];
+            function get_a_single_arr(single_array) {
+                let count_positive = 0;
+                let count_negative = 0;
+                for(let i=0; i<single_array.length; i++) {
+                    if(single_array[i] > 0) {
+                        count_positive++;
+                    }
+                    else if(single_array[i] < 0) {
+                        count_negative++;
+                    }
+                }
+                let temp = count_positive - count_negative;
+                return (temp);
+            }
+
+
+            function determine(temp) {
+                if(temp > 0) {
+                    return ("Positive");
+                }
+                else if(temp < 0) {
+                    return ("Negative");
+                }
+                else {
+                    return ("Zero")
+                }
+            }
+
+
+            function displaying_result(final_result) {
+                console.log(final_result);
+            }
+
+
+            displaying_result(determine(get_a_single_arr(single_array)));
+
+        </script>
+    </body>
+
+</html>

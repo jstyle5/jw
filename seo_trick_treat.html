@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>seo_trick_treat</title>
+        <meta charset="utf-8">
+        <style>
+        p {font-size: xx-large; font-weight: bold;}
+        </style>
+    </head>
+    
+    
+    <body>
+        <p id="texting">Welcome to BCIT COMP1536</p>
+        
+        <button onclick="text_color_swap1()">ORANGE</button>
+        <button onclick="text_color_swap2()">GREY</button>
+        <button onclick="text_color_swap3()">CYAN</button>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <img id="img1" src="images/knock_door.jpg" alt="door1" width="300" height="300" onclick="swap1()" />
+        <img id="img2" src="images/knock_door.jpg" alt="door2" width="300" height="300" onclick="swap2()"/>
+        <img id="img3" src="images/knock_door.jpg" alt="door3" width="300" height="300" onclick="swap3()"/>
+
+            <script>
+                var toggle1 = true;
+                var toggle2 = true;
+                var toggle3 = true;
+
+                function swap1() {   
+                    if (toggle1 === true) {
+                        document.getElementById("img1").src = "images/spooky1.jpg";
+                    } else {
+                        document.getElementById("img1").src = "images/knock_door.jpg";
+                    }
+                    toggle1 = !toggle1;
+                }
+
+                function swap2() {   
+                    if (toggle2 === true) {
+                        document.getElementById("img2").src = "images/spooky2.jpg";
+                    } else {
+                        document.getElementById("img2").src = "images/knock_door.jpg";
+                    }
+                    toggle2 = !toggle2;
+                }
+
+                function swap3() {   
+                    if (toggle3 === true) {
+                        document.getElementById("img3").src = "images/candy.png";
+                    } else {
+                        document.getElementById("img3").src = "images/knock_door.jpg";
+                    }
+                    toggle3 = !toggle3;
+                }
+
+                function text_color_swap1() {  
+                    document.getElementById("texting").style.color = "orange";
+                }
+
+                function text_color_swap2() {  
+                    document.getElementById("texting").style.color = "grey";
+                }
+
+                function text_color_swap3() {  
+                    document.getElementById("texting").style.color = "cyan";
+                }
+
+            
+            </script>
+
+    </body>
+
+
+</html>

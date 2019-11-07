@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Lab7_B</title>
+        <meta charset="utf-8">
+        <style>
+            #MyImg { position: absolute; top: 0px; left: 0px; }
+        </style>
+    </head>
+
+    <body>
+
+        <img id="MyImg" src="images/cat.jpg" alt="cat" width="150" height="150" onclick="catMoving()" />
+
+        <script>
+            // document.write(width)
+            // document.write(height)
+            function catMoving() {
+                let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+                let x = Math.random() * (width - 150);
+                let y = Math.random() * (height - 150);
+                let myCat = document.getElementById("MyImg");
+                myCat.style.top = y + "px";
+                myCat.style.left = x + "px";
+            }
+
+
+        </script>
+
+    </body>
+</html>
