@@ -10,46 +10,51 @@
         <div class="wrapper">
             <p><strong>Your Score</strong></p>
             <p id="scoreID">0</p>
+            <img id="gameoverImg" src="images/gameover.gif" alt="Game Over" />
             <button id="new_button" onclick="newGame()">New Game</button>
             <button id="end_button" onclick="endGame()">End Game</button>
         </div>
         
-        <img id="zombieImg" src="images/zombie.gif" alt="Zombie"/>
         <audio id="audioID" src="src/bomb.mp3"></audio>
 
+
         <script>
-            
+           
             let score = 0;
-            let myZombie = document.getElementById("zombieImg");
-            let myExplosion = document.getElementById("explosionImg");
+            let zombie_num = 3;
             let myScore = document.getElementById("scoreID");
             let myAudio = document.getElementById("audioID");
-            let moveZombieInterval = setInterval(function(){moveZombie()}, 2000);
+            let myGameover = document.getElementById("gameoverImg");
+            let moveZombieInterval1 = setInterval(function(){moveZombie(cloned_zombies[0])}, 2000);
+            let moveZombieInterval2 = setInterval(function(){moveZombie(cloned_zombies[1])}, 2000);
+            let moveZombieInterval3 = setInterval(function(){moveZombie(cloned_zombies[2])}, 2000);
             let zombieDead = false;
-
-            // let zombies = [z1, z2, z3]; // <--- zombies..(HTMLImage)
-            // let zombieIntervals = [];
-            // for (let i = 0; i < zombies.length; i++) {
-            //     //  moveZombie(zombies[i])
-            // }
-
-            function newGame() {
-                clearInterval(moveZombieInterval);
-                myScore.innerHTML = "0";
-                score = 0;
-                moveZombieInterval = setInterval(function(){moveZombie()}, 2000);
-                myZombie.onclick = killZombie;
+            let cloned_zombies = [];
+            for (let i = 0; i < zombie_num; i++) {
+                cloned_zombies.push(createZombie());
             }
 
 
             function createZombie() {
-                // Create img HTMLElement
-                // return zombie
+                let img = document.createElement('img');
+                img.src = "images/zombie.gif";
+                img.alt = "Zombie";
+                img.id = "zombieImg";
+                return img;
             }
 
 
+            function newGame() {
+                for (let i = 0; i < zombie_num; i++) {
+                    cloned_zombies[i].style.visibility = "visible"; 
+                }
+                myGameover.style.visibility = "hidden";
+                myScore.innerHTML = "0";
+                score = 0;
+            }
             
-            function moveZombie() {
+
+            function moveZombie(myZombie) {
                 let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
                 let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
                 let x = Math.floor(Math.random() * (width - myZombie.width));
@@ -59,6 +64,9 @@
                 myZombie.style.transform = "translate(0, 0)";
                 myZombie.style.left = x + "px";
                 myZombie.style.top = y + "px";
+                document.body.appendChild(myZombie); 
+                return function() {        
+                }
             }
 
 
@@ -67,34 +75,36 @@
             }
             
             
-            function killZombie() {   
-                if(!zombieDead) {
-                    earnScore();
-                    zombieDead = true;
+            function killZombie(myZombie) {   
+                return function() {
+                    if(!zombieDead) {
+                        myZombie.src = "images/explosion.gif";
+                        myAudio.playbackRate = 2;
+                        myAudio.play();  
+                        earnScore();
+                        zombieDead = true;
+                    }
                 }
-                myZombie.src = "images/explosion.gif";
-                myAudio.playbackRate = 2;
-                myAudio.play();  
-            }
-
-
-            function gameoverMessage() {
-                myZombie.src = "images/gameover.gif";
             }
 
 
             function endGame() {
-                myZombie.style="position: absolute; top: 50%; left: 50%;"
-                myScore.innerHTML="0";
-                myZombie.src = "images/zombie.gif";
-                setTimeout(function(){gameoverMessage()},500);
-                myZombie.onclick = gameoverMessage;
-                score = 0;
-                clearInterval(moveZombieInterval);
+                for (let i = 0; i < zombie_num; i++) {
+                    cloned_zombies[i].style.visibility = "hidden"; 
+                }
+                myGameover.style.visibility = "visible";
+            }
+            
+
+            function main() {
+                newGame();  
+                for (let i = 0; i < zombie_num; i++) {
+                    cloned_zombies[i].onclick = killZombie(cloned_zombies[i]);
+                }
             }
 
-            newGame();
-
+            main()            
+            
         </script>
     </body>
 </html>
