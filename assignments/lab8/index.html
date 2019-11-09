@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>seo_lab8</title>
+        <meta charset="UTF-8" />
+
+    </head>
+
+    <body>
+        
+        <script>
+
+            // PART A
+            function generateButtons(n) {
+                for (let i = 0; i < n; i++) {
+                    let capitalLetter = String.fromCharCode(65 + i);
+                    let btn = document.createElement("BUTTON");
+                    document.body.appendChild(btn);
+                    btn.innerHTML = capitalLetter;
+                    btn.onclick = function() {console.log("Button " + capitalLetter + " was clicked.")};
+                }
+            }
+
+            generateButtons(26);
+            let p = document.createElement("P");
+            document.body.appendChild(p);
+            p.innerHTML = " ";
+
+
+            // PART B
+            function MyRecipe(title, servings, ingredients) {
+                this.title = title;
+                this.servings = servings;
+                this.ingredients = ingredients;
+                this.print = function() {
+                    document.write("Title: " + this.title + "<br/>");
+                    document.write("Serves: " + this.servings + "<br/>");
+                    document.write("Ingredients:" + "<br/>");
+                    for(let i = 0; i < this.ingredients.length; i++) {
+                        document.write(this.ingredients[i] + "<br/>");
+                    }
+                    document.write("<br/>");
+                }
+            }
+
+            let myObj1 = new MyRecipe("Chicken Cacciatore", 2, ["cinnamon", "lettuce", "onion"]);
+            let myObj2 = new MyRecipe("Chicken & Potato", 4, ["chicken breast","potato"]);
+            let myObj3 = new MyRecipe("Mongolian Beef", 6, ["beef", "garlic", "ginger", "pepper", "salt"]);
+        
+            myObj1.print();
+            myObj2.print();
+            myObj3.print();
+
+        </script>
+
+
+    </body>
+
+
+</html>
