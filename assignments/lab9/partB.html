@@ -1,0 +1,121 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>seo_lab9_partB</title>
+</head>
+
+<body>
+    <p><strong>How many buttons to create?</strong></p>
+    <input type="text" id="textID">
+    <input type="button" id="buttonID" value="Go!">
+    <p id="myP"></p>
+
+    <script>
+
+        let arrayOfButtons = [];
+        let myInterval = null;
+        let buttonWidth = 160;  // 10em = 160px
+        let buttonHeight = 80;  // 5em = 160px
+        let clickedButtonID = 0;
+
+
+        function validateInput() {
+            let user_input;
+            user_input = document.getElementById("textID").value;
+            if (parseInt(user_input) < 5 || parseInt(user_input) > 100 || user_input === '' || isNaN(user_input)) {
+                document.getElementById("myP").innerHTML = "Invalid input. Try again.";
+            } else {
+                document.getElementById("myP").innerHTML = "";
+                return user_input
+            }
+        }
+
+
+        function createRandomButtons() {
+            clearAllButtons();
+            let user_input = validateInput();
+            for (let i = 0; i < user_input; i++) {
+                let myTop = 0;
+                let myLeft = 0;
+                let randomRGB = createRandomRGB();
+                let creadtedButton = new Button(myTop, myLeft, `rgb(${randomRGB[0]}, ${randomRGB[1]}, ${randomRGB[2]}`, i)
+                creadtedButton.btn.onclick = function () {
+                    if (creadtedButton.id == clickedButtonID) {
+                        document.getElementById("myP").innerHTML = "Good!";
+                        creadtedButton.btn.style.visibility = "hidden";
+                        clickedButtonID++;
+                        if (clickedButtonID == user_input) {
+                            document.getElementById("myP").innerHTML = "Excellent memory!";
+                        }
+                    } else {
+                        document.getElementById("myP").innerHTML = "Wrong button!";
+                    }
+                }
+                arrayOfButtons.push(creadtedButton);
+            }
+            myInterval = setInterval(randomButtonLocation, user_input * 1000);
+        }
+
+
+        function Button(top, left, color, id) {
+            this.top = top;
+            this.left = left;
+            this.color = color;
+            this.id = id;
+            this.btn = document.createElement("button");
+            this.btn.id = `${this.id}`;
+            this.btn.style.top = this.top + "px";
+            this.btn.style.left = this.left + "px";
+            this.btn.style.background = this.color;
+            this.btn.style.width = "160px";  // 10em = 160px
+            this.btn.style.height = "80px";  //  5em = 80px
+            document.body.appendChild(this.btn);
+        }
+
+
+        function createRandomRGB() {
+            let randomRGB = [];
+            for (let i = 0; i < 3; i++) {
+                let randomNumber = Math.floor(Math.random() * 256);
+                randomRGB.push(randomNumber);
+            }
+            return randomRGB;
+        }
+
+
+        function randomButtonLocation() {
+            let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+            for (let i = 0; i < arrayOfButtons.length; i++) {
+                let x = Math.floor(Math.random() * (width - buttonWidth));
+                let y = Math.floor(Math.random() * (height - buttonHeight));
+                let myButton = document.getElementById(`${i}`);
+                myButton.style.position = "absolute";
+                myButton.style.top = y + "px";
+                myButton.style.left = x + "px";
+            }
+        }
+
+
+        function clearAllButtons() {
+            for (let i = 0; i < arrayOfButtons.length; i++) {
+                document.getElementById(arrayOfButtons[i].btn.id).remove();
+            }
+            clickedButtonID = 0;
+            clearInterval(myInterval);
+            arrayOfButtons = [];
+        }
+
+
+        document.getElementById("buttonID").onclick = createRandomButtons;
+
+
+    </script>
+
+</body>
+
+</html>
