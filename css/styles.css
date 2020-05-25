@@ -1,4 +1,5 @@
 body {
+    color: #40514E;
     margin: 0;
     text-align: center;
     font-family: 'Merriweather', serif;
@@ -87,6 +88,8 @@ a {
 #profile-id {
     color: #40514E;
     margin-bottom: 4rem;
+    width: 50%;
+    margin: auto;
 }
 
 #contact-me-description {
