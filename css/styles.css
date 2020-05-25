@@ -5,9 +5,14 @@ body {
     font-family: 'Merriweather', serif;
 }
 
+p {
+    line-height: 3;
+}
+
 hr {
     width: 50px;
-    border: dotted 1px #EAF6F6;
+    border: dotted 6px #EAF6F6;
+    border-bottom: none;
 }
 
 h1 {
@@ -21,6 +26,7 @@ h2 {
     color: #66BFBF;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
+    margin: 50px auto 0 auto;
 }
 
 h3 {
