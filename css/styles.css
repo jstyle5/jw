@@ -12,7 +12,7 @@ hr {
 
 h1 {
     color: #66BFBF;
-    font-size: 4rem;
+    font-size: 2rem;
     margin: 50px auto 0 auto;
     line-height: 2;
 }
@@ -20,7 +20,7 @@ h1 {
 h2 {
     color: #66BFBF;
     font-family: 'Montserrat', sans-serif;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 
 h3 {
@@ -36,16 +36,9 @@ a {
 .top-container {
     background-color: #E4F9F5;
     position: relative;
-    padding-top: 100px;
-}
-
-.title-container {
-    position: relative;
-}
-
-#mountain-img {
-    width: 60%;
-    height: 60%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    height: 400px;
 }
 
 .pro {
@@ -55,13 +48,18 @@ a {
 .top-cloud {
     position: absolute;
     right: 15%;
-    top: -50%;
 }
 
 .bottom-cloud {
     position: absolute;
     left: 15%;
-    bottom: -50%;
+}
+
+.mountain-img {
+    position: relative;
+    /* top: -50%; */
+    width: 50%;
+    height: 50%;
 }
 
 .skill-row {
