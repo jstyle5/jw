@@ -35,8 +35,15 @@ h3 {
 }
 
 a {
+    font-family: 'Montserrat', sans-serif;
     padding-top: 2rem;
     color: #11999E;
+    margin: 0 1rem 0 1rem;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #EAF6F6;
 }
 
 .top-container {
@@ -158,4 +165,10 @@ a {
     -moz-border-radius: 10px;
     border-radius: 10px;
     text-decoration: none;
+}
+
+#copyright {
+    color: #EAF6F6;
+    font-size: 0.75rem;
+    padding: 10px 0;
 }
